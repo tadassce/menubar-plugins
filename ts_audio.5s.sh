@@ -56,7 +56,8 @@ result=":mic.fill:"
 
 if [[ "$input" == ":airpodpro.left:" ]]; then
   # result=":exclamationmark.triangle.fill: :mic.fill: :airpodspro:"
-  result="⚠️ :mic.fill: :airpodspro:"
+  # result="⚠️ :mic.fill: :airpodspro:"
+  result="⚠️ :mic.fill:"
 fi
 
 echo "$result"
