@@ -19,11 +19,11 @@ bangalore="$(TZ=':Asia/Kolkata' date +'%H:%M')"
 # echo "$vancouver — $toronto —— $warsaw — $london"
 echo "$toronto"
 echo "---"
-echo "$vancouver PST Vancouver"
-echo "$toronto EST Toronto"
-echo "$warsaw CET Warsaw"
-echo "$london UTC London"
-echo "$bangalore IST Bangalore"
+echo "$vancouver Vancouver"
+echo "$toronto Toronto"
+echo "$warsaw Warsaw"
+echo "$london London"
+echo "$bangalore Bangalore"
 
 # echo -n "Vancouver "; TZ=":US/Pacific" date +'%H:%M'
 # echo -n "Toronto "; TZ=":America/Toronto" date +'%H:%M'
