@@ -26,10 +26,15 @@ if [[ "$input_volume" == "0" ]]; then
   input=":mic.slash:"
 fi
 
-# Make sure the output is not to the Yeti
+# Make sure the output is not Yeti
 if [[ "$output" =~ Yet$ ]]; then
   # Switch to the next one
-  /opt/homebrew/bin/SwitchAudioSource -t output -n
+  $($brew_bin/SwitchAudioSource -t output -n)
+fi
+
+# Use Yeti mic if available
+if [[ ! "$input" =~ Yet$ ]]; then
+  $($brew_bin/SwitchAudioSource -t input -s "Yeti Nano")
 fi
 
 if [[ "$output" =~ LG\ $ ]]; then
