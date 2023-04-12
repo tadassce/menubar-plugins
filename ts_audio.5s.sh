@@ -12,7 +12,7 @@ input_full=$($brew_bin/SwitchAudioSource -c -t input)
 output_full=$($brew_bin/SwitchAudioSource -c -t output)
 input=":mic: ${input_full::3}"
 output=":speaker.wave.2: ${output_full::3}"
-input_volume=$(osascript -e 'input volume of (get volume settings)')
+# input_volume=$(osascript -e 'input volume of (get volume settings)')
 
 if [[ "$input" =~ Mac$ ]]; then
   input=":mic: :laptopcomputer:"
@@ -22,9 +22,9 @@ elif [[ "$input" =~ Yet$ ]]; then
   input=":mic.fill:"
 fi
 
-if [[ "$input_volume" == "0" ]]; then
-  input=":mic.slash:"
-fi
+# if [[ "$input_volume" == "0" ]]; then
+#   input=":mic.slash:"
+# fi
 
 # Make sure the output is not Yeti
 if [[ "$output" =~ Yet$ ]]; then
@@ -67,5 +67,6 @@ fi
 
 echo "$result"
 echo "---"
-echo "Mic: $input_full - $input_volume"
+# echo "Mic: $input_full - $input_volume"
+echo "Mic: $input_full"
 echo "Out: $output_full"
