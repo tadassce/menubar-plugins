@@ -6,6 +6,11 @@
 # <bitbar.author.github>tadassce</bitbar.author.github>
 # <bitbar.desc>Show audio input and output state</bitbar.desc>
 # <bitbar.dependencies>switchaudio-osx</bitbar.dependencies>
+# <swiftbar.hideAbout>true</swiftbar.hideAbout>
+# <swiftbar.hideRunInTerminal>true</swiftbar.hideRunInTerminal>
+# <swiftbar.hideLastUpdated>true</swiftbar.hideLastUpdated>
+# <swiftbar.hideDisablePlugin>true</swiftbar.hideDisablePlugin>
+# <swiftbar.hideSwiftBar>true</swiftbar.hideSwiftBar>
 
 brew_bin="/opt/homebrew/bin"
 input_full=$($brew_bin/SwitchAudioSource -c -t input)

@@ -7,6 +7,11 @@
 # <bitbar.desc>Rotates current time through four common timezones </bitbar.desc>
 # <bitbar.image>http://i.imgur.com/Y4nhdZo.png</bitbar.image>
 # <bitbar.dependencies>Bash GNU AWK</bitbar.dependencies>
+# <swiftbar.hideAbout>true</swiftbar.hideAbout>
+# <swiftbar.hideRunInTerminal>true</swiftbar.hideRunInTerminal>
+# <swiftbar.hideLastUpdated>true</swiftbar.hideLastUpdated>
+# <swiftbar.hideDisablePlugin>true</swiftbar.hideDisablePlugin>
+# <swiftbar.hideSwiftBar>true</swiftbar.hideSwiftBar>
 
 # berlin="$(TZ=':Europe/Berlin' date +'%H:%M')"
 # alaska="$(TZ=':US/Alaska' date +'%H:%M')"
