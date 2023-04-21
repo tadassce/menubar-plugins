@@ -31,14 +31,17 @@ fi
 #   input=":mic.slash:"
 # fi
 
-# Make sure the output is not Yeti
+# Output - make sure it's not Yeti
 if [[ "$output" =~ Yet$ ]]; then
   # Switch to the next one
   $($brew_bin/SwitchAudioSource -t output -n)
 fi
 
-# Use Yeti mic if available
+# Mic - use Yeti or MacBook's
 if [[ ! "$input" =~ Yet$ ]]; then
+  # Default to MacBook's
+  $($brew_bin/SwitchAudioSource -t input -s "MacBook Pro Microphone")
+  # Use Yeti if available
   $($brew_bin/SwitchAudioSource -t input -s "Yeti Nano")
 fi
 
