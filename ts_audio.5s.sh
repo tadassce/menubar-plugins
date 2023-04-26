@@ -13,68 +13,39 @@
 # <swiftbar.hideSwiftBar>true</swiftbar.hideSwiftBar>
 
 brew_bin="/opt/homebrew/bin"
-input_full=$($brew_bin/SwitchAudioSource -c -t input)
-output_full=$($brew_bin/SwitchAudioSource -c -t output)
-input=":mic: ${input_full::3}"
-output=":speaker.wave.2: ${output_full::3}"
+current_input=$($brew_bin/SwitchAudioSource -c -t input)
+current_output=$($brew_bin/SwitchAudioSource -c -t output)
 # input_volume=$(osascript -e 'input volume of (get volume settings)')
 
-if [[ "$input" =~ Mac$ ]]; then
-  input=":mic: :laptopcomputer:"
-elif [[ "$input" =~ TS\ $ ]]; then
-  input=":airpodpro.left:"
-elif [[ "$input" =~ Yet$ ]]; then
-  input=":mic.fill:"
-fi
-
-# if [[ "$input_volume" == "0" ]]; then
-#   input=":mic.slash:"
-# fi
+# My devices
+yeti="Yeti Nano"
+lg="LG UltraFine Display Audio"
+mac_mic="MacBook Pro Microphone"
+mac_speakers="MacBook Pro Speakers"
+airpods="TS AirPods Pro"
 
 # Output - make sure it's not Yeti
-if [[ "$output" =~ Yet$ ]]; then
+if [[ "$current_output" == $yeti ]]; then
   # Switch to the next one
   $($brew_bin/SwitchAudioSource -t output -n)
 fi
 
 # Mic - use Yeti or MacBook's
-if [[ ! "$input" =~ Yet$ ]]; then
+if [[ "$current_input" != $yeti ]]; then
   # Default to MacBook's
-  $($brew_bin/SwitchAudioSource -t input -s "MacBook Pro Microphone")
+  $($brew_bin/SwitchAudioSource -t input -s $mac_mic)
   # Use Yeti if available
-  $($brew_bin/SwitchAudioSource -t input -s "Yeti Nano")
+  $($brew_bin/SwitchAudioSource -t input -s $yeti)
 fi
 
-if [[ "$output" =~ LG\ $ ]]; then
-  output=":speaker.wave.2: :display:"
-elif [[ "$output" =~ TS\ $ ]]; then
-  output=":airpodpro.right:"
-elif [[ "$output" =~ Ext$ ]]; then
-  output=":headphones:"
-fi
-
-# result="$input $output "
-# result="$input $input_volume $output "
-
-# if [[ "$input" == ":airpodpro.left:" && "$output" == ":airpodpro.right:" ]]; then
-#   result=":airpodspro:"
-# fi
+icon=":mic.fill:"
 
 # Show a warning if AirPods mic is used
-# result=" "
-# result=":mic.circle:"
-# result=":mic.circle.fill:"
-# result=":mic:"
-result=":mic.fill:"
-
-if [[ "$input" == ":airpodpro.left:" ]]; then
-  # result=":exclamationmark.triangle.fill: :mic.fill: :airpodspro:"
-  # result="⚠️ :mic.fill: :airpodspro:"
-  result="⚠️ :mic.fill:"
+if [[ "$current_input" == $airpods ]]; then
+  icon="⚠️ :mic.fill:"
 fi
 
-echo "$result"
+echo "$icon"
 echo "---"
-# echo "Mic: $input_full - $input_volume"
-echo "Mic: $input_full"
-echo "Out: $output_full"
+echo "Mic: $current_input"
+echo "Out: $current_output"
