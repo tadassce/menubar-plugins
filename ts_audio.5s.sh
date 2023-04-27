@@ -19,29 +19,22 @@ all_inputs=$($switch -t input -a)
 all_outputs=$($switch -t output -a)
 # input_volume=$(osascript -e 'input volume of (get volume settings)')
 
-# My devices
-yeti="Yeti Nano"
-lg="LG UltraFine Display Audio"
-mac_mic="MacBook Pro Microphone"
-mac_speakers="MacBook Pro Speakers"
-airpods="TS AirPods Pro"
-
 yeti_available=""
-if [[ $all_inputs == *"$yeti"* ]]; then
+if [[ $all_inputs == *"Yeti"* ]]; then
   yeti_available="yes"
 fi
 
 airpods_available=""
-if [[ $all_outputs == *"$airpods"* ]]; then
+if [[ $all_outputs == *"TS AirPods Pro"* ]]; then
   airpods_available="yes"
 fi
 
 # Output - make sure it's not Yeti
-if [[ "$current_output" == $yeti ]]; then
+if [[ "$current_output" == "Yeti Nano" ]]; then
 
   # Prefer AirPods
   if [[ -n "$airpods_available" ]]; then
-    $switch -t output -s \"$airpods\"
+    $switch -t output -s "TS AirPods Pro"
   else
     # Switch to the next one
     $switch -t output -n
@@ -49,22 +42,22 @@ if [[ "$current_output" == $yeti ]]; then
 fi
 
 # Mic - use Yeti or MacBook's
-if [[ "$current_input" != "$yeti" ]]; then
+if [[ "$current_input" != "Yeti Nano" ]]; then
 
   # Use Yeti if available
   if [[ -n "$yeti_available" ]]; then
-    $switch -t input -s \"$yeti\"
+    $switch -t input -s "Yeti Nano"
 
-  elif [[ "$current_input" != "$mac_mic" ]]; then
+  elif [[ "$current_input" != "MacBook Pro Microphone" ]]; then
     # Fallback to MacBook's
-    $switch -t input -s \"$mac_mic\"
+    $switch -t input -s "MacBook Pro Microphone"
   fi
 fi
 
 icon=":mic.fill:"
 
 # Show a warning if AirPods mic is used
-if [[ "$current_input" == $airpods ]]; then
+if [[ "$current_input" == "TS AirPods Pro" ]]; then
   icon="⚠️ :mic.fill:"
 fi
 
