@@ -27,27 +27,34 @@ airpods_available=""
 
 # Output - make sure it's not Yeti
 if [[ "$current_output" == "Yeti Nano" ]]; then
+  msg=""
 
   # Prefer AirPods
   if [[ -n "$airpods_available" ]]; then
-    $switch -t output -s "TS AirPods Pro"
+    msg=$($switch -t output -s "TS AirPods Pro")
+
   else
     # Switch to the next one
-    $switch -t output -n
+    msg=$($switch -t output -n)
   fi
+
+  [ -n "$msg" ] && osascript -e "display notification \"${msg//\"/}\" with title \"TS Audio\""
 fi
 
 # Mic - use Yeti or MacBook's
 if [[ "$current_input" != "Yeti Nano" ]]; then
+  msg=""
 
   # Use Yeti if available
   if [[ -n "$yeti_available" ]]; then
-    $switch -t input -s "Yeti Nano"
+    msg=$($switch -t input -s "Yeti Nano")
 
   elif [[ "$current_input" != "MacBook Pro Microphone" ]]; then
     # Fallback to MacBook's
-    $switch -t input -s "MacBook Pro Microphone"
+    msg=$($switch -t input -s "MacBook Pro Microphone")
   fi
+
+  [ -n "$msg" ] && osascript -e "display notification \"${msg//\"/}\" with title \"TS Audio\""
 fi
 
 icon=":mic.fill:"
