@@ -20,14 +20,10 @@ all_outputs=$($switch -t output -a)
 # input_volume=$(osascript -e 'input volume of (get volume settings)')
 
 yeti_available=""
-if [[ $all_inputs == *"Yeti"* ]]; then
-  yeti_available="yes"
-fi
+[[ $all_inputs == *"Yeti"* ]] && yeti_available="yes"
 
 airpods_available=""
-if [[ $all_outputs == *"TS AirPods Pro"* ]]; then
-  airpods_available="yes"
-fi
+[[ $all_outputs == *"TS AirPods Pro"* ]] && airpods_available="yes"
 
 # Output - make sure it's not Yeti
 if [[ "$current_output" == "Yeti Nano" ]]; then
