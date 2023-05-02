@@ -57,14 +57,7 @@ if [[ "$current_input" != "Yeti Nano" ]]; then
   [ -n "$msg" ] && osascript -e "display notification \"${msg//\"/}\" with title \"TS Audio\""
 fi
 
-icon=":mic.fill:"
-
-# Show a warning if AirPods mic is used
-if [[ "$current_input" == "TS AirPods Pro" ]]; then
-  icon="⚠️ :mic.fill:"
-fi
-
-echo "$icon"
+echo ":mic.fill:"
 echo "---"
 echo ":mic: $current_input"
 echo ":speaker.wave.2: $current_output"
