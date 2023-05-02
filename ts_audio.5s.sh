@@ -38,7 +38,10 @@ if [[ "$current_output" == "Yeti Nano" ]]; then
     msg=$($switch -t output -n)
   fi
 
-  [ -n "$msg" ] && osascript -e "display notification \"${msg//\"/}\" with title \"TS Audio\""
+  msg=${msg//\"/}
+  msg=${msg/output audio device set to/Output:}
+
+  [ -n "$msg" ] && osascript -e "display notification \"$msg\" with title \"TS Audio\""
 fi
 
 # Mic - use Yeti or MacBook's
@@ -54,7 +57,10 @@ if [[ "$current_input" != "Yeti Nano" ]]; then
     msg=$($switch -t input -s "MacBook Pro Microphone")
   fi
 
-  [ -n "$msg" ] && osascript -e "display notification \"${msg//\"/}\" with title \"TS Audio\""
+  msg=${msg//\"/}
+  msg=${msg/input audio device set to/Mic:}
+
+  [ -n "$msg" ] && osascript -e "display notification \"$msg\" with title \"TS Audio\""
 fi
 
 echo ":mic.fill:"
