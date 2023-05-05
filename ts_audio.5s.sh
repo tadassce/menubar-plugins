@@ -15,19 +15,15 @@
 switch="/opt/homebrew/bin/SwitchAudioSource"
 current_input=$($switch -t input -c)
 current_output=$($switch -t output -c)
-all_inputs=$($switch -t input -a)
-all_outputs=$($switch -t output -a)
 # input_volume=$(osascript -e 'input volume of (get volume settings)')
-
-yeti_available=""
-[[ $all_inputs == *"Yeti"* ]] && yeti_available="yes"
-
-airpods_available=""
-[[ $all_outputs == *"TS AirPods Pro"* ]] && airpods_available="yes"
 
 # Output - make sure it's not Yeti
 if [[ "$current_output" == "Yeti Nano" ]]; then
   msg=""
+
+  airpods_available=""
+  all_outputs=$($switch -t output -a)
+  [[ $all_outputs == *"TS AirPods Pro"* ]] && airpods_available="yes"
 
   # Prefer AirPods
   if [[ -n "$airpods_available" ]]; then
@@ -47,6 +43,10 @@ fi
 # Mic - use Yeti or MacBook's
 if [[ "$current_input" != "Yeti Nano" ]]; then
   msg=""
+
+  yeti_available=""
+  all_inputs=$($switch -t input -a)
+  [[ $all_inputs == *"Yeti"* ]] && yeti_available="yes"
 
   # Use Yeti if available
   if [[ -n "$yeti_available" ]]; then
