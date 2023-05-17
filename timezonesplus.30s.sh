@@ -17,18 +17,20 @@
 # alaska="$(TZ=':US/Alaska' date +'%H:%M')"
 vancouver="$(TZ=':US/Pacific' date +'%H:%M')"
 toronto="$(TZ=':America/Toronto' date +'%H:%M')"
-warsaw="$(TZ=':Europe/Warsaw' date +'%H:%M')"
+newfoundland="$(TZ=':America/St_Johns' date +'%H:%M')"
 london="$(TZ=':Europe/London' date +'%H:%M')"
-bangalore="$(TZ=':Asia/Kolkata' date +'%H:%M')"
+warsaw="$(TZ=':Europe/Warsaw' date +'%H:%M')"
+# bangalore="$(TZ=':Asia/Kolkata' date +'%H:%M')"
 
 # echo "$vancouver — $toronto —— $warsaw — $london"
 echo "$toronto"
 echo "---"
-echo "$vancouver Vancouver"
-echo "$toronto Toronto"
-echo "$warsaw Warsaw"
+echo "$vancouver California"
+echo "$toronto Ottawa"
+echo "$newfoundland Newfoundland"
 echo "$london London"
-echo "$bangalore Bangalore"
+echo "$warsaw Warsaw"
+# echo "$bangalore Bangalore"
 
 # echo -n "Vancouver "; TZ=":US/Pacific" date +'%H:%M'
 # echo -n "Toronto "; TZ=":America/Toronto" date +'%H:%M'
