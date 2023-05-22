@@ -35,7 +35,8 @@ if [[ "$current_output" == "Yeti Nano" ]]; then
   fi
 
   msg=${msg//\"/}
-  msg=${msg/output audio device set to/Mic: $current_input\\nOutput set to:}
+  msg=${msg/output audio device set to/→ Output:}
+  msg="Mic: $current_input\\n$msg"
 
   [ -n "$msg" ] && osascript -e "display notification \"$msg\" with title \"TS Audio\""
 fi
@@ -58,7 +59,8 @@ if [[ "$current_input" != "Yeti Nano" ]]; then
   fi
 
   msg=${msg//\"/}
-  msg=${msg/input audio device set to/Outut: $current_output\\nMic set to:}
+  msg=${msg/input audio device set to/→ Mic:}
+  msg="$msg\\nOutut: $current_output"
 
   [ -n "$msg" ] && osascript -e "display notification \"$msg\" with title \"TS Audio\""
 fi
