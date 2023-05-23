@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# <bitbar.title>TS Audio</bitbar.title>
+# <bitbar.title>IO</bitbar.title>
 # <bitbar.version>v1.0.0</bitbar.version>
 # <bitbar.author>Tadas Sce</bitbar.author>
 # <bitbar.author.github>tadassce</bitbar.author.github>
