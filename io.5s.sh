@@ -12,6 +12,7 @@
 # <swiftbar.hideDisablePlugin>true</swiftbar.hideDisablePlugin>
 # <swiftbar.hideSwiftBar>true</swiftbar.hideSwiftBar>
 
+title="🎧"
 switch="/opt/homebrew/bin/SwitchAudioSource"
 current_input=$($switch -t input -c)
 current_output=$($switch -t output -c)
@@ -38,7 +39,7 @@ if [[ "$current_output" == "Yeti Nano" ]]; then
   msg=${msg/output audio device set to/→ Output:}
   msg="Mic: $current_input\\n$msg"
 
-  [ -n "$msg" ] && osascript -e "display notification \"$msg\" with title \"TS Audio\""
+  osascript -e "display notification \"$msg\" with title \"$title\""
 fi
 
 # Mic - use Yeti or MacBook's
@@ -62,7 +63,7 @@ if [[ "$current_input" != "Yeti Nano" ]]; then
   msg=${msg/input audio device set to/→ Mic:}
   msg="$msg\\nOutut: $current_output"
 
-  [ -n "$msg" ] && osascript -e "display notification \"$msg\" with title \"TS Audio\""
+  [ -n "$msg" ] && osascript -e "display notification \"$msg\" with title \"$title\""
 fi
 
 echo ":mic.fill:"
