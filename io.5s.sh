@@ -61,7 +61,7 @@ if [[ "$current_input" != "Yeti Nano" ]]; then
 
   msg=${msg//\"/}
   msg=${msg/input audio device set to/→ Mic:}
-  msg="$msg\\nOutut: $current_output"
+  [ -n "$msg" ] && msg="$msg\\nOutut: $current_output"
 
   [ -n "$msg" ] && osascript -e "display notification \"$msg\" with title \"$title\""
 fi
