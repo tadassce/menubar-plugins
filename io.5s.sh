@@ -22,8 +22,8 @@ current_output=$($switch -t output -c)
 if [[ "$current_output" == "Yeti Nano" ]]; then
   msg=""
 
-  airpods_available=""
   all_outputs=$($switch -t output -a)
+  airpods_available=""
   [[ $all_outputs == *"TS AirPods Pro"* ]] && airpods_available="yes"
 
   # Prefer AirPods
@@ -46,15 +46,17 @@ fi
 if [[ "$current_input" != "Yeti Nano" ]]; then
   msg=""
 
-  yeti_available=""
   all_inputs=$($switch -t input -a)
+  yeti_available=""
   [[ $all_inputs == *"Yeti"* ]] && yeti_available="yes"
+  macbook_available=""
+  [[ $all_inputs == *"MacBook Pro Microphone"* ]] && macbook_available="yes"
 
   # Use Yeti if available
   if [[ -n "$yeti_available" ]]; then
     msg=$($switch -t input -s "Yeti Nano")
 
-  elif [[ "$current_input" != "MacBook Pro Microphone" ]]; then
+  elif [[ "$current_input" != "MacBook Pro Microphone" && -n "$macbook_available" ]]; then
     # Fallback to MacBook's
     msg=$($switch -t input -s "MacBook Pro Microphone")
   fi
