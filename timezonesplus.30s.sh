@@ -23,7 +23,7 @@ newfoundland="$(TZ=':America/St_Johns' date +'%H:%M')"
 london="$(TZ=':Europe/London' date +'%H:%M')"
 warsaw="$(TZ=':Europe/Warsaw' date +'%H:%M')"
 # bangalore="$(TZ=':Asia/Kolkata' date +'%H:%M')"
-malaysia="$(TZ=':Asia/Kuala_Lumpur' date +'%H:%M')"
+# malaysia="$(TZ=':Asia/Kuala_Lumpur' date +'%H:%M')"
 
 # echo "$vancouver — $toronto —— $warsaw — $london"
 # echo "$toronto"
@@ -37,10 +37,9 @@ echo "$newfoundland Newfoundland (-3.5)"
 echo "$london London (0)"
 # echo "$warsaw Warsaw (+1)"
 # echo "$bangalore Bangalore"
-echo "$malaysia Malaysia (+8)"
+# echo "$malaysia Malaysia (+8)"
 
 # echo -n "Vancouver "; TZ=":US/Pacific" date +'%H:%M'
 # echo -n "Toronto "; TZ=":America/Toronto" date +'%H:%M'
 # echo -n "Warsaw "; TZ=":Europe/Warsaw" date +'%H:%M'
 # echo -n "London " ; TZ=":Europe/London" date +'%H:%M'
-
