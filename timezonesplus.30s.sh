@@ -14,6 +14,7 @@
 # <swiftbar.hideSwiftBar>true</swiftbar.hideSwiftBar>
 
 day="$(date +'%a %b %d, %Y')"
+sanfrancisco="$(TZ=':America/Los_Angeles' date +'%H:%M')"
 # alaska="$(TZ=':US/Alaska' date +'%H:%M')"
 # vancouver="$(TZ=':US/Pacific' date +'%H:%M')"
 # chicago="$(TZ=':America/Chicago' date +'%H:%M')"
@@ -28,9 +29,10 @@ vilnius="$(TZ=':Europe/Vilnius' date +'%H:%M')"
 # malaysia="$(TZ=':Asia/Kuala_Lumpur' date +'%H:%M')"
 
 # echo "$vancouver   $toronto"
-echo "$newyork"
+echo "$sanfrancisco"
 echo "---"
 echo "$day"
+echo "$sanfrancisco San Francisco (-8)"
 # echo "$vancouver California (-8)"
 # echo "$chicago Chicago (-6)"
 # echo "$toronto Ottawa (-5)"
