@@ -30,11 +30,7 @@ vilnius="$(TZ=':Europe/Vilnius' date +'%H:%M')"
 # bangalore="$(TZ=':Asia/Kolkata' date +'%H:%M')"
 # malaysia="$(TZ=':Asia/Kuala_Lumpur' date +'%H:%M')"
 
-# echo "$vancouver — $toronto —— $warsaw — $london"
-# echo "$vancouver   $toronto"
-# echo "$toronto"
-
-echo ":globe:"
+echo ":globe: $toronto"
 echo "---"
 echo "$day"
 echo "$vancouver San Francisco (-8)"
