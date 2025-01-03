@@ -24,11 +24,11 @@ if [[ "$current_output" == "Yeti Nano" ]]; then
 
   all_outputs=$($switch -t output -a)
   airpods_available=""
-  [[ $all_outputs == *"TS AirPods Pro"* ]] && airpods_available="yes"
+  [[ $all_outputs == *"AirPods Pro"* ]] && airpods_available="yes"
 
   # Prefer AirPods
   if [[ -n "$airpods_available" ]]; then
-    msg=$($switch -t output -s "TS AirPods Pro")
+    msg=$($switch -t output -s "AirPods Pro")
 
   else
     # Switch to the next one
