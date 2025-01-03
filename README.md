@@ -1,1 +1,1 @@
-Plugins for [SwiftBar](https://swiftbar.app) / [xbar](https://xbarapp.com) / BitBar
+Plugins for [xbar](https://xbarapp.com) / BitBar / [SwiftBar](https://github.com/swiftbar/SwiftBar)
