@@ -22,24 +22,30 @@ current_output=$($switch -t output -c)
 if [[ "$current_output" == "Yeti Nano" ]]; then
   msg=""
 
-  all_outputs=$($switch -t output -a)
-  airpods_available=""
-  [[ $all_outputs == *"AirPods Pro"* ]] && airpods_available="yes"
-
-  # Prefer AirPods
-  if [[ -n "$airpods_available" ]]; then
-    msg=$($switch -t output -s "AirPods Pro")
-
-  else
-    # Switch to the next one
-    msg=$($switch -t output -n)
-  fi
+  # Switch to the next one
+  msg=$($switch -t output -n)
 
   msg=${msg//\"/}
   msg=${msg/output audio device set to/→ Output:}
   msg="Mic: $current_input\\n$msg"
 
   osascript -e "display notification \"$msg\" with title \"$title\""
+fi
+
+# Output - prefer AirPods
+if [[ "$current_output" != *"AirPods Pro"* ]]; then
+  all_outputs=$($switch -t output -a)
+  airpods_name=$(echo "$all_outputs" | grep "AirPods Pro")
+
+  if [[ -n "$airpods_name" ]]; then
+    msg=$($switch -t output -s "$airpods_name")
+
+    msg=${msg//\"/}
+    msg=${msg/output audio device set to/→ Output:}
+    msg="Mic: $current_input\\n$msg"
+
+    osascript -e "display notification \"$msg\" with title \"$title\""
+  fi
 fi
 
 # Mic - use Yeti or MacBook's
