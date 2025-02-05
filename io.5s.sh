@@ -18,19 +18,19 @@ current_input=$($switch -t input -c)
 current_output=$($switch -t output -c)
 # input_volume=$(osascript -e 'input volume of (get volume settings)')
 
-# Output - make sure it's not Yeti
-if [[ "$current_output" == "Yeti Nano" ]]; then
-  msg=""
+# # Output - make sure it's not Yeti
+# if [[ "$current_output" == "Yeti Nano" ]]; then
+#   msg=""
 
-  # Switch to the next one
-  msg=$($switch -t output -n)
+#   # Switch to the next one
+#   msg=$($switch -t output -n)
 
-  msg=${msg//\"/}
-  msg=${msg/output audio device set to/→ Output:}
-  msg="Mic: $current_input\\n$msg"
+#   msg=${msg//\"/}
+#   msg=${msg/output audio device set to/→ Output:}
+#   msg="Mic: $current_input\\n$msg"
 
-  osascript -e "display notification \"$msg\" with title \"$title\""
-fi
+#   osascript -e "display notification \"$msg\" with title \"$title\""
+# fi
 
 # Output - prefer AirPods
 if [[ "$current_output" != *"AirPods Pro"* ]]; then
