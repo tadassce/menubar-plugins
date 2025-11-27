@@ -28,8 +28,17 @@ warsaw="$(TZ=':Europe/Warsaw' date +'%H:%M')"
 vilnius="$(TZ=':Europe/Vilnius' date +'%H:%M')"
 # bangalore="$(TZ=':Asia/Kolkata' date +'%H:%M')"
 # malaysia="$(TZ=':Asia/Kuala_Lumpur' date +'%H:%M')"
+tokyo="$(TZ=':Asia/Tokyo' date +'%H:%M')"
 
-echo ":globe: $toronto"
+current_timezone="$(date +%Z)"
+
+# In London?
+if [[ "$current_timezone" == "GMT" ]] || [[ "$current_timezone" == "BST" ]]; then
+  echo ":globe: $toronto"
+else
+  echo ":globe: $london"
+fi
+
 echo "---"
 echo "$day"
 echo "$vancouver San Francisco (-8)"
@@ -37,8 +46,9 @@ echo "$vancouver San Francisco (-8)"
 echo "$toronto Toronto (-5)"
 # echo "$newfoundland Newfoundland (-3.5)"
 echo "$london London (0)"
-# echo "$berlin Berlin (+1)"
+echo "$berlin Berlin (+1)"
 # echo "$warsaw Warsaw (+1)"
 echo "$vilnius Vilnius (+2)"
 # echo "$bangalore Bangalore"
 # echo "$malaysia Malaysia (+8)"
+echo "$tokyo Tokyo (+9)"
