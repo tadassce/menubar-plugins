@@ -48,7 +48,7 @@ if [[ "$current_output" != *"AirPods Pro"* ]]; then
   fi
 fi
 
-# Mic - use Yeti or MacBook's
+# Mic - use Yeti or Sennheiser or MacBook's
 if [[ "$current_input" != "Yeti Nano" ]]; then
   msg=""
 
@@ -57,14 +57,20 @@ if [[ "$current_input" != "Yeti Nano" ]]; then
   [[ $all_inputs == *"Yeti"* ]] && yeti_available="yes"
   macbook_available=""
   [[ $all_inputs == *"MacBook Pro Microphone"* ]] && macbook_available="yes"
+  # sennheiser_available=""
+  # [[ $all_inputs == *"Sennheiser XS LAV USB-C"* ]] && sennheiser_available="yes"
 
   # Use Yeti if available
   if [[ -n "$yeti_available" ]]; then
     msg=$($switch -t input -s "Yeti Nano")
 
-  elif [[ "$current_input" != "MacBook Pro Microphone" && -n "$macbook_available" ]]; then
-    # Fallback to MacBook's
-    msg=$($switch -t input -s "MacBook Pro Microphone")
+  # elif [[ "$current_input" != "Sennheiser XS LAV USB-C" && -n "sennheiser_available" ]]; then
+  #   # Switch to Sennheiser
+  #   msg=$($switch -t input -s "Sennheiser XS LAV USB-C")
+
+  # elif [[ "$current_input" != "MacBook Pro Microphone" && -n "$macbook_available" ]]; then
+  #   # Fallback to MacBook's
+  #   msg=$($switch -t input -s "MacBook Pro Microphone")
   fi
 
   msg=${msg//\"/}
